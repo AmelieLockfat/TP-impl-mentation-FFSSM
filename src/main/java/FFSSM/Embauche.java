@@ -23,10 +23,11 @@ public class Embauche {
      * @param dateFin la date à laquelle cette embauche est terminée
      */
     public void terminer(LocalDate dateFin) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+          this.fin=dateFin;
     }
-    
+
+
+
     /**
      * Est-ce que cette embauche est terminée ?
      * @return vrai si terminée, faux sinon.

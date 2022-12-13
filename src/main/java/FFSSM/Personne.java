@@ -29,6 +29,9 @@ public class Personne
         this.naissance = naissance;
     }
 
+    public Personne() {
+    }
+
     public String getNumeroINSEE() {
         return numeroINSEE;
     }

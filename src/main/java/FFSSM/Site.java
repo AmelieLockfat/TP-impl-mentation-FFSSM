@@ -8,6 +8,7 @@ public class Site
 {
 	public String nom;
 
+
 	public Site(String nom, String details) {
 		this.nom = nom;
 		this.details = details;
