@@ -24,8 +24,15 @@ public class Moniteur extends Plongeur {
      * @return l'employeur actuel de ce moniteur sous la forme d'un Optional
      */
     public Optional<Club> employeurActuel() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+
+        for(int i = emplois.size()-1; i>0; i--) {
+            if (this.emplois.get(i).getDebut().isBefore(LocalDate.now())) {
+                if (!this.emplois.get(i).estTerminee()) {
+                    return Optional.of(this.emplois.get(i).getEmployeur());
+                }
+            }
+        }
+        return Optional.empty();
     }
     
     /**
