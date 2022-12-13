@@ -31,6 +31,10 @@ public class Plongee {
 		this.duree = duree;
 	}
 
+	public Plongee(Moniteur m1) {
+		this.chefDePalanquee=m1;
+	}
+
 	public void ajouteParticipant(Plongeur participant) {
 		 Plongeurs.add(participant);
 	}
@@ -48,7 +52,7 @@ public class Plongee {
 	public boolean estConforme() {
 		boolean test = true;
 		for (Plongeur p : Plongeurs){
-			if (p.getLicence().estValide(date)==false){
+			if (p.derniereLicence().estValide(date)==false){
 				test=false;
 			}
 		}

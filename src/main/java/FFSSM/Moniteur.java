@@ -13,7 +13,7 @@ public class Moniteur extends Plongeur {
     public int numeroDiplome;
     public ArrayList<Embauche> emplois;
 
-    public Moniteur(String numeroINSEE, String nom, String prenom, String adresse, String telephone, LocalDate naissance, int numeroDiplome) {
+    public Moniteur(String numeroINSEE, String nom, String prenom, String adresse, String telephone, LocalDate naissance, GroupeSanguin amoins, int numeroDiplome) {
         super(numeroINSEE, nom, prenom, adresse, telephone, naissance);
         this.numeroDiplome = numeroDiplome;
     }
@@ -25,9 +25,11 @@ public class Moniteur extends Plongeur {
      */
     public Optional<Club> employeurActuel() {
 
-        for(int i = emplois.size()-1; i>0; i--) {
-            if (this.emplois.get(i).getDebut().isBefore(LocalDate.now())) {
-                if (!this.emplois.get(i).estTerminee()) {
+        for(int i = emplois.size()-1; i>0; i--){
+            if(this.emplois.get(i).getDebut().isBefore(LocalDate.now()))
+            {
+                if(!this.emplois.get(i).estTerminee())
+                {
                     return Optional.of(this.emplois.get(i).getEmployeur());
                 }
             }
@@ -48,6 +50,13 @@ public class Moniteur extends Plongeur {
     public List<Embauche> emplois() {
         return emplois;
         }
+
+public void terminerEmbauche(LocalDate fin){
+    int index = emplois.size();
+    Embauche derniereEmbauche =  emplois.get(index-1);
+    derniereEmbauche.terminer(fin);
+}
+
 
 }
 
