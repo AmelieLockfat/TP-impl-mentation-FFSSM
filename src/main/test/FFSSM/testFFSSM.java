@@ -8,6 +8,7 @@ import FFSSM.*;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,18 +25,19 @@ public class testFFSSM {
     Site RUN;
     Plongee Pl1;
     Plongee Pl2;
+    ArrayList<Licence> listevide = new ArrayList<Licence>();
 
     public void setUp() {
-        P1=new Plongeur("95","Dupont","Jean",)
+        P2=new Plongeur("95","Dupont","Jean","25 rue Fatigue","0992583656",LocalDate.of(2020,10,11),2,listevide,GroupeSanguin.BPLUS);
 
     }
 
     @Test
     public void testAjouteLicence() throws Exception{
-        P2.ajouteLicence("123AM",LocalDate.of(2022,12,12));
-        assertEquals(P2, P2.derniereLicence().getPossesseur(),
-                "La licence n'a pas été ajoutée au bon plongeur");
-        assertEquals(ClubSandwich,P2.derniereLicence().getClub(),"Club délivrant incorrect");
+       Licence licencetest= new Licence (P2,"1",LocalDate.of(2022,10,23),ClubSandwich);
+       P2.ajouteLicence("1",LocalDate.of(2022,10,23));
+       assertEquals(P2.derniereLicence(),licencetest,"non");
+
     }
 
 }
